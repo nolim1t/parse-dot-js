@@ -1,4 +1,4 @@
 parse-dot-js
 ============
 
-parse.com node.js library
+parse.com ~~node.js~~ coffeescript library
