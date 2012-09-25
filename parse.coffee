@@ -16,7 +16,7 @@ parselib = {
 			}
 			url = url + encodeURIComponent(JSON.stringify(geoquerybuilder))
 			if process.env.PARSEAPPID != undefined and process.env.PARSERESTKEY != undefined
-				request {uri: url, timeout: 5, method: 'GET', headers: {"X-Parse-Application-Id": process.env.PARSEAPPID, "X-Parse-REST-API-Key": process.env.PARSERESTKEY}}, (error, response, body) ->
+				request {uri: url, timeout: 5000, method: 'GET', headers: {"X-Parse-Application-Id": process.env.PARSEAPPID, "X-Parse-REST-API-Key": process.env.PARSERESTKEY}}, (error, response, body) ->
 					if not error
 						if JSON.parse(body).error == undefined
 							callback({success: 'OK', result: JSON.parse(body)})
@@ -35,7 +35,7 @@ parselib = {
 			if info.objectid != undefined
 				url = url + "/" + info.objectid
 			if process.env.PARSEAPPID != undefined and process.env.PARSERESTKEY != undefined
-				request {uri: url, timeout: 5, method: 'GET', headers: {"X-Parse-Application-Id": process.env.PARSEAPPID, "X-Parse-REST-API-Key": process.env.PARSERESTKEY}}, (error, response, body) ->
+				request {uri: url, timeout: 5000, method: 'GET', headers: {"X-Parse-Application-Id": process.env.PARSEAPPID, "X-Parse-REST-API-Key": process.env.PARSERESTKEY}}, (error, response, body) ->
 					if not error
 						callback({success: 'OK', result: JSON.parse(body)})
 					else
@@ -49,7 +49,7 @@ parselib = {
 		if info.username != undefined
 			url = "https://api.parse.com/1/users/" + info.username
 			if process.env.PARSEAPPID != undefined and process.env.PARSERESTKEY != undefined
-				request {uri: url, timeout: 5, method: 'GET', headers: {"X-Parse-Application-Id": process.env.PARSEAPPID, "X-Parse-REST-API-Key": process.env.PARSERESTKEY, "X-Parse-Session-Token": info.session}}, (error, response, body) ->
+				request {uri: url, timeout: 5000, method: 'GET', headers: {"X-Parse-Application-Id": process.env.PARSEAPPID, "X-Parse-REST-API-Key": process.env.PARSERESTKEY, "X-Parse-Session-Token": info.session}}, (error, response, body) ->
 					if not error
 						if JSON.parse(body).sessionToken != undefined
 							validSession = true
@@ -76,7 +76,7 @@ parselib = {
 				}
 			}
 			if process.env.PARSEAPPID != undefined and process.env.PARSERESTKEY != undefined
-				request {uri: url, timeout: 5, method: 'POST', body: JSON.stringify(postbody), headers: {"X-Parse-Application-Id": process.env.PARSEAPPID, "X-Parse-REST-API-Key": process.env.PARSERESTKEY, "Content-Type": "application/json"}}, (error, response, body) ->
+				request {uri: url, timeout: 5000, method: 'POST', body: JSON.stringify(postbody), headers: {"X-Parse-Application-Id": process.env.PARSEAPPID, "X-Parse-REST-API-Key": process.env.PARSERESTKEY, "Content-Type": "application/json"}}, (error, response, body) ->
 					if not error
 						if JSON.parse(body).error == undefined
 							callback({success: 'OK', status: true, result: JSON.parse(body)})
